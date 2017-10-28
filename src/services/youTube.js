@@ -1,29 +1,33 @@
 angular.module('video-player')
   .service('youTube', function($http) {
   // TODO
-  
-    $http({
-      method: 'GET',
-      url: 'https://www.googleapis.com/youtube/v3/search',
-      params: {
-        maxResults: 5,
-        key: window.YOUTUBE_API_KEY,
-        part: 'snippet',
-        query: 'puppies',
-        type: 'video',
-        videoEmbeddable: true
-      }
-    }).then(function successCallback(response) {
-      dataBlob = response;
-      console.log('success', dataBlob);
-      console.log('success', response);
-      // this callback will be called asynchronously
-      // when the response is available
-    }, function errorCallback(response) {
-      // called asynchronously if an error occurs
-      // or server returns response with an error status.
-      console.error('backcats: Failed to send message', response);
-    });
+    this.search = function (query, callback) {
+     
+      $http({
+        method: 'GET',
+        url: 'https://www.googleapis.com/youtube/v3/search',
+        params: {
+          maxResults: 5,
+          key: window.YOUTUBE_API_KEY,
+          part: 'snippet',
+          q: query,
+          type: 'video',
+          videoEmbeddable: true
+        }
+      }).then(function successCallback(response) {
+        
+        // dataBlob = response.data.item;
+        callback(response.data.items);
+        console.log('success', response.data.items);
+        console.log('success', response.data.items);
+        // this callback will be called asynchronously
+        // when the response is available
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        console.error('backcats: Failed to send message', response);
+      });
+    };
   });
   
   
