@@ -6,10 +6,5 @@ angular.module('video-player')
     bindings: {
       video: '<'
     }
-    // controller: function () {
-    //   this.$onInit = function() {
-    //     this.videoLink = 'https://www.youtube.com/embed/' + this.video.id.videoId;
-    //   };
-    // }
   }
   );

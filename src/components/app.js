@@ -4,13 +4,19 @@ angular.module('video-player')
     controller: function (youTube) {
       this.dataBlob;
       
-      youTube.search('puppies', (data) => {
-        this.videos = data;
-        this.video = this.videos[0];
-      });
-
+      this.search = (query) => {
+        if (query.length > 0) {
+          youTube.search(query, (data) => {
+            this.videos = data;
+            this.video = this.videos[0];
+          });
+        }
+      };
       this.videoListEntryClick = (obj) => {
         this.video = obj;
+      };
+      this.$onInit = function() {
+        this.search('snoop dog planet earth');
       };
     }
   });
