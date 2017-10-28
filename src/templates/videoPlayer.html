@@ -1,9 +1,10 @@
 <div class="video-player">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" allowFullScreen src={{$sce.trustAsResourceUrl($ctrl.videoLink)}}></iframe>
+    <iframe class="embed-responsive-item" src={{$ctrl.videoLink}} allowFullScreen></iframe>
   </div>
   <div class="video-player-details">
     <h3>{{$ctrl.video.snippet.title}}</h3>
     <div>{{$ctrl.video.snippet.description}}</div>
   </div>
 </div>
+<!-- $sce.trustAsResourceUrl( -->

@@ -12,5 +12,5 @@ angular.module('video-player')
         console.log(this);
       };
     }
-
-  });
+  }
+  );
